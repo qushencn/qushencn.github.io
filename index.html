@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <title>存钱修仙传</title>
+    <style>
+        body {
+            background: 
+                linear-gradient(135deg, #0a132f 0%, #1a2352 100%),
+                repeating-linear-gradient(45deg, 
+                    rgba(100, 255, 218, 0.1) 0px, 
+                    rgba(100, 255, 218, 0.1) 2px,
+                    transparent 2px,
+                    transparent 4px),
+                url('data:image/svg+xml,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M-1-1h102v102H-1z" fill="none" stroke="%2364ffda" stroke-width="0.5"/></svg>');
+            font-family: 'ZCOOL KuaiLe', cursive;
+            color: #e6f1ff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+            animation: gradient 15s ease infinite;
+            background-size: 400% 400%;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .cloud {
+            position: absolute;
+            background: rgba(255,255,255,0.05);
+            border-radius: 100px;
+            animation: float 20s infinite linear;
+            filter: blur(3px);
+        }
+
+        @keyframes float {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(150vw); }
+        }
+
+        .list-container {
+            background: rgba(10, 19, 47, 0.9);
+            border-radius: 16px;
+            padding: 32px;
+            width: 90%;
+            max-width: 700px;
+            box-shadow: 0 0 50px rgba(100, 255, 218, 0.2);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(100, 255, 218, 0.3);
+            position: relative;
+            z-index: 2;
+            margin: 20px auto;
+        }
+
+        h1 {
+            font-family: 'Ma Shan Zheng', cursive;
+            text-align: center;
+            font-size: 3.5rem;
+            margin: 0 0 40px;
+            background: linear-gradient(135deg, #64ffda 30%, #ffd700 70%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            padding: 20px 0;
+        }
+
+        h1::before,
+        h1::after {
+            content: '〄';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: #64ffda;
+            opacity: 0.8;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        h1::before { left: -40px; }
+        h1::after { right: -40px; }
+
+        .list-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 18px 24px;
+            margin: 12px 0;
+            border-radius: 8px;
+            background: linear-gradient(45deg, 
+                rgba(16, 26, 61, 0.8) 0%,
+                rgba(32, 46, 90, 0.6) 100%);
+            border: 1px solid rgba(100, 255, 218, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .list-item::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, 
+                transparent 30%,
+                rgba(100, 255, 218, 0.1) 50%,
+                transparent 70%);
+            animation: light-flow 4s infinite linear;
+        }
+
+        .list-item span:first-child {
+            font-family: 'Ma Shan Zheng', cursive;
+            text-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
+            position: relative;
+            z-index: 1;
+        }
+
+        .list-item span:last-child {
+            color: #ffd700;
+            font-family: 'ZCOOL KuaiLe', cursive;
+            position: relative;
+            padding-right: 30px;
+            z-index: 1;
+        }
+
+        .list-item span:last-child::after {
+            content: '💰';
+            position: absolute;
+            right: 0;
+            animation: coin-spin 2s infinite;
+        }
+
+        @keyframes light-flow {
+            0% { transform: rotate(45deg) translateX(-100%); }
+            100% { transform: rotate(45deg) translateX(100%); }
+        }
+
+        @keyframes coin-spin {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(360deg); }
+        }
+
+        @keyframes glow {
+            0%, 100% { opacity: 0.5; filter: drop-shadow(0 0 5px #64ffda); }
+            50% { opacity: 1; filter: drop-shadow(0 0 15px #64ffda); }
+        }
+
+        /* 修正后的御剑动画 */
+        .sword {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            animation: dao-guang 8s infinite linear;
+            z-index: 1;
+            top: 50%;
+            left: -10%;
+            opacity: 0.7;
+        }
+
+        @keyframes dao-guang {
+            0% { 
+                transform: translateX(-10vw) translateY(-50%) rotate(-30deg);
+                opacity: 0;
+            }
+            20% {
+                transform: translateX(30vw) translateY(-40%) rotate(-15deg);
+                opacity: 1;
+            }
+            80% {
+                transform: translateX(80vw) translateY(-60%) rotate(15deg);
+                opacity: 1;
+            }
+            100% { 
+                transform: translateX(110vw) translateY(-50%) rotate(30deg);
+                opacity: 0;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="cloud" style="top:20%; left:-200px; width:150px; height:50px;"></div>
+    <div class="cloud" style="top:60%; right:-200px; width:180px; height:60px;"></div>
+
+    <!-- 修正后的剑图标 -->
+    <div class="sword">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="80" height="80">
+            <path fill="#64ffda" d="M11.293 2.293a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L13 5.414V9h2v2h-2v2h2v2h-2v2h2v2h-2v2h-2v-2H9v2H7v-2H5v-2h2v-2H5v-2h2V9H5V7h2V5h2v2h2V5h2V3h-1.586l1.293-1.293a1 1 0 00-1.414-1.414l-3 3z"/>
+            <path fill="none" stroke="#64ffda" stroke-width="2" d="M12 4v16"/>
+        </svg>
+    </div>
+
+    <div class="list-container">
+        <h1>存钱修仙传 - 境界等级</h1>
+        <div class="list-item">
+            <span>练气一层</span>
+            <span>1万</span>
+        </div>
+        <div class="list-item">
+            <span>练气二层</span>
+            <span>2万</span>
+        </div>
+        <div class="list-item">
+            <span>练气三层</span>
+            <span>3万</span>
+        </div>
+        <div class="list-item">
+            <span>练气四层</span>
+            <span>4万</span>
+        </div>
+        <div class="list-item">
+            <span>练气五层</span>
+            <span>5万</span>
+        </div>
+        <div class="list-item">
+            <span>练气六层</span>
+            <span>6万</span>
+        </div>
+        <div class="list-item">
+            <span>练气七层</span>
+            <span>7万</span>
+        </div>
+        <div class="list-item">
+            <span>练气八层</span>
+            <span>8万</span>
+        </div>
+        <div class="list-item">
+            <span>练气九层</span>
+            <span>9万</span>
+        </div>
+        <div class="list-item">
+            <span>筑基初期</span>
+            <span>10万</span>
+        </div>
+        <div class="list-item">
+            <span>筑基中期</span>
+            <span>20万</span>
+        </div>
+        <div class="list-item">
+            <span>筑基后期</span>
+            <span>25万</span>
+        </div>
+        <div class="list-item">
+            <span>筑基巅峰</span>
+            <span>29万</span>
+        </div>
+        <div class="list-item">
+            <span>结丹初期</span>
+            <span>30万</span>
+        </div>
+        <div class="list-item">
+            <span>结丹中期</span>
+            <span>50万</span>
+        </div>
+        <div class="list-item">
+            <span>结丹后期</span>
+            <span>80万</span>
+        </div>
+        <div class="list-item">
+            <span>结丹巅峰</span>
+            <span>99万</span>
+        </div>
+        <div class="list-item">
+            <span>元婴初期</span>
+            <span>100万</span>
+        </div>
+        <div class="list-item">
+            <span>元婴中期</span>
+            <span>300万</span>
+        </div>
+        <div class="list-item">
+            <span>元婴后期</span>
+            <span>600万</span>
+        </div>
+        <div class="list-item">
+            <span>元婴巅峰</span>
+            <span>999万</span>
+        </div>
+        <div class="list-item">
+            <span>化神期</span>
+            <span>1000万</span>
+        </div>
+    </div>
+</body>
+</html>
